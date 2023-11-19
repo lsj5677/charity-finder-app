@@ -2,6 +2,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
 import { searchCharities } from "../api/CharityApi";
 import { useEffect, useState } from "react";
+import { CharityType } from "../types/charity.types";
 
 export const CharityDetail = () => {
   const {
@@ -10,11 +11,9 @@ export const CharityDetail = () => {
 
   const [success, setSuccess] = useState<string>("");
   const [save, setSave] = useState<boolean>(false);
-  const [favorites, setFavorites] = useState<any[]>(
+  const [favorites, setFavorites] = useState<CharityType[]>(
     readCharitesFromLocalStorage,
   );
-
-  console.log(`fav`, favorites);
 
   const navigate = useNavigate();
   const charityData = charity.charity;
@@ -39,12 +38,9 @@ export const CharityDetail = () => {
       .catch((err) => console.log(`err :: ${err}`));
   };
 
-  const handleAdd = (added: any) => {
-    console.log(`add`, added.name);
-    let isExisting = favorites.some((data) => data.name === added.name);
-    if (isExisting) {
-      setSave(false);
-    }
+  const isExisting = favorites.some((data) => data.name === name);
+
+  const handleAdd = (added: CharityType) => {
     if (!isExisting) {
       setFavorites([...favorites, added]);
       localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -53,15 +49,13 @@ export const CharityDetail = () => {
     setSave(!save);
     setTimeout(() => {
       setSuccess("");
-    }, 3000);
+    }, 2000);
   };
-  const handleRemove = (deleted: any) => {
-    console.log(`de`, deleted);
+  const handleRemove = (deleted: CharityType) => {
+    console.log(`>>`);
+    setSave(false);
     setFavorites(favorites.filter((item) => item.name !== deleted.name));
-
     localStorage.setItem("favorites", JSON.stringify(favorites));
-
-    setSave(!save);
   };
 
   useEffect(() => {
@@ -98,7 +92,7 @@ export const CharityDetail = () => {
               {success}
             </span>
           )}
-          {save ? (
+          {save || isExisting ? (
             <button
               onClick={() => handleRemove({ ...charityData })}
               className="cursor-pointer rounded-sm bg-green-900 py-3 transition-all hover:contrast-150"
@@ -143,7 +137,7 @@ export const CharityDetail = () => {
   );
 };
 
-function readCharitesFromLocalStorage() {
+export function readCharitesFromLocalStorage() {
   const favorites = localStorage.getItem("favorites");
   return favorites ? JSON.parse(favorites) : [];
 }

@@ -1,21 +1,20 @@
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { CharityType } from "../types/charity.types";
+import { readCharitesFromLocalStorage } from "./CharityDetail";
+import { CharityCard } from "../components/CharityCard";
 
 export const Favorites = () => {
-  // const {
-  //   state: { charity },
-  // } = useLocation();
+  const [charities, setCharities] = useState<CharityType>(
+    readCharitesFromLocalStorage(),
+  );
 
-  // console.log(`fav`, charity);
+  console.log(`l`, charities);
 
-  // const {
-  //   logoUrl,
-  //   name,
-  //   profileUrl,
-  //   description,
-  //   location,
-  //   tags,
-  //   coverImageUrl,
-  // } = charity.charity;
-
-  return <div>Favorites</div>;
+  return (
+    <div className="sub-wrap grid grid-cols-1 gap-2 gap-y-4 sm:grid-cols-2 md:grid-cols-3">
+      {charities?.map((charity: CharityType) => (
+        <CharityCard key={charity.name} charity={charity} />
+      ))}
+    </div>
+  );
 };
