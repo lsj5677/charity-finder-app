@@ -88,7 +88,9 @@ export const CharityDetail = () => {
             </div>
             <div className="bg-mainBeige my-2 flex w-fit items-center gap-2 rounded-sm px-1 text-sm">
               <IoLocationSharp className="fill-pointRed" />
-              <span>{location ? location.split(",", 3) : "N / A"}</span>
+              <span>
+                {location ? location.split(",", 3).join(",") : "N / A"}
+              </span>
             </div>
           </div>
 
