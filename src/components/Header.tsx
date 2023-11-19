@@ -1,6 +1,6 @@
 import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import SearchBar from "./Searchbar";
+import SearchBar from "./SearchBar";
 
 export const Header = () => {
   return (
