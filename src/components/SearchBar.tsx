@@ -43,7 +43,7 @@ export default function SearchBar() {
           id="search"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          placeholder="Search api..."
+          placeholder="Search api keyword..."
           className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 shadow-md focus:border-blue-500 focus:ring-blue-500 "
         />
         <button className="bg-pointNavy absolute bottom-2.5 end-2.5 rounded-lg px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300">
