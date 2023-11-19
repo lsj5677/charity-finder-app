@@ -1,6 +1,6 @@
 import { AiFillHeart } from "react-icons/ai";
-import Search from "./Search";
 import { Link } from "react-router-dom";
+import SearchBar from "./Searchbar";
 
 export const Header = () => {
   return (
@@ -11,7 +11,7 @@ export const Header = () => {
             <span className="text-pointRed font-extrabold">C</span>harity Finder
           </h1>
         </Link>
-        <Search />
+        <SearchBar />
         <Link to="/favorites">
           <button className="bg-pointBeige flex h-10 w-12 items-center justify-center rounded-full shadow-md">
             <AiFillHeart size={25} className=" fill-pointRed" />

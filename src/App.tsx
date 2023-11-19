@@ -5,6 +5,7 @@ import { NotFound } from "./pages/NotFound";
 import { CharityDetail } from "./pages/CharityDetail";
 import { Favorites } from "./pages/Favorites";
 import { Layout } from "./Layout";
+import { SearchResults } from "./pages/SearchResults";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "/charities/details/:id", element: <CharityDetail /> },
       { path: "/favorites", element: <Favorites /> },
+      { path: "/search/:keyword", element: <SearchResults /> },
     ],
   },
 ]);

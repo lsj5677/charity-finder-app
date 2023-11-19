@@ -2,14 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { CharityType } from "../types/charity.types";
 import { IoLocationSharp } from "react-icons/io5";
 
-type CharityCardProps = {
+type CharityCardType = {
   charity: CharityType;
   key: string;
 };
-export const CharityCard = (charity: CharityCardProps) => {
+export const CharityCard = (charity: CharityCardType) => {
   const navigate = useNavigate();
-  console.log("charity ::", charity);
-  const { logoUrl, name, websiteUrl, description, location } = charity.charity;
+  const { logoUrl, name, description, location } = charity.charity;
 
   return (
     <article
@@ -18,13 +17,13 @@ export const CharityCard = (charity: CharityCardProps) => {
           state: { charity },
         });
       }}
-      className={`bg-mainBeige hover:bg-pointBeige group cursor-pointer rounded-md px-6 py-5 shadow-md transition ease-in-out hover:transition-all ${
-        !websiteUrl && "hover:bg-mainGray"
-      }`}
+      className={`bg-mainBeige hover:bg-pointBeige group cursor-pointer rounded-md px-6 py-5 shadow-md transition ease-in-out hover:transition-all`}
     >
       <div className="bg-mainGray text-mainBeige flex w-fit items-center gap-2 truncate rounded-sm px-1 text-xs">
         <IoLocationSharp />
-        <span>{location ? location : "N / A"}</span>
+        <span className="truncate">
+          {location ? location.split(",", 1) : "N / A"}
+        </span>
       </div>
       <div className="border-mainGray my-3 flex items-center gap-3 border-b pb-3">
         <img src={logoUrl} alt={name} className="rounded-full" />

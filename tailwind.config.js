@@ -10,6 +10,9 @@ export default {
         pointRed: "#ac3b61",
         pointNavy: "#123c69",
       },
+      backgroundImage: {
+        bg: "url('../public/images/background.jpeg')",
+      },
     },
   },
   plugins: [],
