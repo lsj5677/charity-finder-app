@@ -66,7 +66,11 @@ export const CharityDetail = () => {
     <section className="sub-wrap grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
       <div className="col-span-2 rounded-sm shadow-md">
         {coverImageUrl ? (
-          <img src={coverImageUrl} alt={name} className=" rounded-t-sm" />
+          <img
+            src={coverImageUrl}
+            alt={name}
+            className=" w-full rounded-t-sm"
+          />
         ) : (
           <div className="bg-bg flex h-[20vh] w-full items-center justify-center rounded-t-sm bg-no-repeat">
             <p className="text-3xl opacity-50">No Image</p>
