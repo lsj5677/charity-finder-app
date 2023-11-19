@@ -4,11 +4,9 @@ import { readCharitesFromLocalStorage } from "./CharityDetail";
 import { CharityCard } from "../components/CharityCard";
 
 export const Favorites = () => {
-  const [charities, setCharities] = useState<CharityType>(
+  const [charities, setCharities] = useState<CharityType[]>(
     readCharitesFromLocalStorage(),
   );
-
-  console.log(`l`, charities);
 
   return (
     <div className="sub-wrap grid grid-cols-1 gap-2 gap-y-4 sm:grid-cols-2 md:grid-cols-3">
