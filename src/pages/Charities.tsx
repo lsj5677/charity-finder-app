@@ -4,14 +4,18 @@ import { getCharities } from "../api/CharityApi";
 import { CharityCard } from "../components/CharityCard";
 
 export const Charities = () => {
-  const [charities, SetCharities] = useState<CharityType[]>();
+  const [charities, setCharities] = useState<CharityType[]>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   // random causes -> param
   const getCharitiesData = async () => {
+    setLoading(true);
     await getCharities() //
       .then((res) => {
         const charities = res.nonprofits;
-        SetCharities(charities);
+        setCharities(charities);
+
+        setLoading(false);
       })
       .catch((err) => console.log(`err :: ${err}`));
   };
@@ -21,10 +25,17 @@ export const Charities = () => {
   }, []);
 
   return (
-    <div className="sub-wrap grid grid-cols-1 gap-2 gap-y-4 sm:grid-cols-2 md:grid-cols-3">
-      {charities?.map((charity: CharityType) => (
-        <CharityCard key={charity.logoCloudinaryId} charity={charity} />
-      ))}
-    </div>
+    <>
+      {loading && (
+        <div className="sub-wrap">
+          <span>Loading...</span>
+        </div>
+      )}
+      <div className="sub-wrap grid grid-cols-1 gap-2 gap-y-4 sm:grid-cols-2 md:grid-cols-3">
+        {charities?.map((charity: CharityType) => (
+          <CharityCard key={charity.logoCloudinaryId} charity={charity} />
+        ))}
+      </div>
+    </>
   );
 };

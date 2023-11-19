@@ -65,15 +65,21 @@ export const CharityDetail = () => {
   return (
     <section className="sub-wrap grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
       <div className="col-span-2 rounded-sm shadow-md">
-        <img src={coverImageUrl} alt={name} className=" rounded-t-sm" />
+        {coverImageUrl ? (
+          <img src={coverImageUrl} alt={name} className=" rounded-t-sm" />
+        ) : (
+          <div className="bg-bg flex h-[20vh] w-full items-center justify-center rounded-t-sm bg-no-repeat">
+            <p className="text-3xl opacity-50">No Image</p>
+          </div>
+        )}
         <div className="p-10">
           <div className="border-mainBeige flex items-center justify-between border-b pb-5">
             <div className="flex items-center gap-4">
-              <img
-                src={logoUrl}
-                alt=""
-                className="border-mainBeige rounded-full border"
-              />
+              {logoUrl ? (
+                <img src={logoUrl} alt={name} className="rounded-full" />
+              ) : (
+                <span className="bg-mainGray h-[48px] w-[48px] rounded-full" />
+              )}
               <h3 className="text-xl font-semibold">{name}</h3>
             </div>
             <div className="bg-mainBeige my-2 flex w-fit items-center gap-2 rounded-sm px-1 text-sm">

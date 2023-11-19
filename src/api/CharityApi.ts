@@ -21,7 +21,7 @@ export const getCharities = async () => {
 export const searchCharities = async (text: string) => {
   const SEARCH_API_ENDPOINT = `${
     import.meta.env.VITE_BASE_URL
-  }/browse/${text}?apiKey=${import.meta.env.VITE_API_KEY}`;
+  }/search/${text}?apiKey=${import.meta.env.VITE_API_KEY}`;
 
   try {
     const res = await axios.get(SEARCH_API_ENDPOINT);

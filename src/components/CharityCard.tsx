@@ -26,7 +26,11 @@ export const CharityCard = (charity: CharityCardType) => {
         </span>
       </div>
       <div className="border-mainGray my-3 flex items-center gap-3 border-b pb-3">
-        <img src={logoUrl} alt={name} className="rounded-full" />
+        {logoUrl ? (
+          <img src={logoUrl} alt={name} className="rounded-full" />
+        ) : (
+          <span className="bg-mainGray h-[48px] w-[48px] rounded-full" />
+        )}
         <h4 className="font-semibold">{name}</h4>
       </div>
       <p className="truncate text-sm">{description}</p>
