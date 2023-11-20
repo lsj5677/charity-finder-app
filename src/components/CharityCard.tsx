@@ -22,7 +22,7 @@ export const CharityCard = (charity: CharityCardType) => {
       <div className="bg-mainGray text-mainBeige flex w-fit items-center gap-2 truncate rounded-sm px-1 text-xs">
         <IoLocationSharp />
         <span className="truncate">
-          {location ? location.split(",", 1) : "N / A"}
+          {location ? location.split(",", 2).join(",") : "N / A"}
         </span>
       </div>
       <div className="border-mainGray my-3 flex items-center gap-3 border-b pb-3">
