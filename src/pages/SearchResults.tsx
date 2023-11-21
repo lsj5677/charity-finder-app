@@ -22,7 +22,7 @@ export const SearchResults = () => {
       ) : (
         <div className="grid grid-cols-1 gap-2 gap-y-4 sm:grid-cols-2 md:grid-cols-3">
           {charities?.map((charity: CharityType) => (
-            <CharityCard key={charity.logoCloudinaryId} charity={charity} />
+            <CharityCard key={charity.logoUrl} charity={charity} />
           ))}
         </div>
       )}

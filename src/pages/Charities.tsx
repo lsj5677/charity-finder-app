@@ -14,7 +14,6 @@ export const Charities = () => {
       .then((res) => {
         const charities = res.nonprofits;
         setCharities(charities);
-
         setLoading(false);
       })
       .catch((err) => console.log(`err :: ${err}`));
@@ -33,7 +32,7 @@ export const Charities = () => {
       )}
       <div className="sub-wrap grid grid-cols-1 gap-2 gap-y-4 sm:grid-cols-2 md:grid-cols-3">
         {charities?.map((charity: CharityType) => (
-          <CharityCard key={charity.logoCloudinaryId} charity={charity} />
+          <CharityCard key={charity.logoUrl} charity={charity} />
         ))}
       </div>
     </>

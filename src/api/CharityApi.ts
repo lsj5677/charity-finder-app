@@ -1,8 +1,8 @@
 import axios from "axios";
 import causes from "../utils/causes.json";
 
-const casuesList = causes.causes;
-let randCauses = casuesList[Math.floor(Math.random() * casuesList.length)];
+const causeList = causes.causes;
+let randCauses = causeList[Math.floor(Math.random() * causeList.length)];
 
 let CHARITY_API_ENDPOINT = `${
   import.meta.env.VITE_BASE_URL
