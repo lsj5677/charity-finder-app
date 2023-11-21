@@ -30,14 +30,25 @@ export default function SearchBar() {
       return;
     }
 
-    await searchCharities(keyword) //
-      .then((res) => {
-        navigate(`/search/${keyword}`, {
-          state: { res, keyword },
-        });
-      })
-      .then()
-      .catch((err) => console.log(`err :: ${err}`));
+    if (typeof e === "string") {
+      await searchCharities(e) //
+        .then((res) => {
+          navigate(`/search/${e}`, {
+            state: { res, e },
+          });
+        })
+        .then()
+        .catch((err) => console.log(`err :: ${err}`));
+    } else {
+      await searchCharities(keyword) //
+        .then((res) => {
+          navigate(`/search/${keyword}`, {
+            state: { res, keyword },
+          });
+        })
+        .then()
+        .catch((err) => console.log(`err :: ${err}`));
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,10 +56,10 @@ export default function SearchBar() {
     setHasText(true);
   };
 
-  const handleDropDown = async (clickOption: string) => {
-    await setText(clickOption);
+  const handleDropDown = (clickOption: string) => {
     setHasText(false);
-    await handleSubmit(clickOption);
+    setText(clickOption);
+    handleSubmit(clickOption);
   };
 
   useEffect(() => {
